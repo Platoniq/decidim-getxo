@@ -5,8 +5,8 @@ Decidim.configure do |config|
   config.mailer_sender = "partehartzea@getxo.eus"
 
   # Change these lines to set your preferred locales
-  config.default_locale = :eu
-  config.available_locales = [:eu, :es]
+  config.default_locale = :en
+  config.available_locales = [:en, :eu, :es]
 
   # Geocoder configuration
   config.geocoder = {
@@ -121,6 +121,10 @@ Decidim.configure do |config|
   #   api_key: Rails.application.secrets.etherpad[:api_key],
   #   api_version: Rails.application.secrets.etherpad[:api_version]
   # }
+end
+
+Decidim::Verifications.register_workflow(:census_authorization_handler) do |workflow|
+  workflow.form = "CensusAuthorizationHandler"
 end
 
 Rails.application.config.i18n.available_locales = Decidim.available_locales
