@@ -25,12 +25,6 @@ describe 'Visit a proposal', type: :system, perform_enqueued: true do
 	  it "is a official proposal" do
 	  	expect(proposal.official?).to eq(true)
 	  end
-
-	  it "renders markdown" do
-	    expect(page).to have_content(proposal.title)
-	    expect(page.html).to include("<h2>title</h2>")
-	    expect(page.html).to include("<strong>bold</strong>")
-	  end
   end
 end
 
