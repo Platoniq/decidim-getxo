@@ -41,4 +41,8 @@ public/uploads
 /config/deploy/*
 /Capfile
 
+# Ignore .rspec-failures
+.rspec-failures
+
+# Ignore .rbenv-vars
 .rbenv-vars
