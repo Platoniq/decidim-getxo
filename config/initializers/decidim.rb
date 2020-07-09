@@ -5,8 +5,8 @@ Decidim.configure do |config|
   config.mailer_sender = "partehartzea@getxo.eus"
 
   # Change these lines to set your preferred locales
-  config.default_locale = :en
-  config.available_locales = [:en, :eu, :es]
+  config.default_locale = :eu
+  config.available_locales = [:eu, :es]
 
   # Geocoder configuration
   config.geocoder = {

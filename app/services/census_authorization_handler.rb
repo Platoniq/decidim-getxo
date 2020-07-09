@@ -12,7 +12,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   attribute :date_of_birth, Date
 
   validates :date_of_birth, presence: true
-  validates :document_number, format: { with: /^[a-zA-Z]?\d{7,8}[a-zA-Z]$/ }, presence: true
+  validates :document_number, format: { with: /\A[a-zA-Z]?\d{7,8}[a-zA-Z]\z/ }, presence: true
 
   validate :document_number_valid
 
@@ -36,7 +36,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   private
 
   def sanitized_date_of_birth
-    @sanitized_date_of_birth ||= date_of_birth&.strftime("%d/%m/%Y")
+    @sanitized_date_of_birth ||= date_of_birth&.strftime("%Y%m%d")
   end
 
   def sanitized_document_number
@@ -44,7 +44,7 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
   end
 
   def sanitized_document_letter
-    (/[a-zA-Z]$/.match document_number)[0]&.upcase
+    (/[a-zA-Z]\z/.match document_number)[0]&.upcase
   end
   
   def document_number_valid
@@ -55,14 +55,13 @@ class CensusAuthorizationHandler < Decidim::AuthorizationHandler
 
   def response
     return nil if document_number.blank? ||
-                  document_type.blank? ||
-                  postal_code.blank? ||
                   date_of_birth.blank?
 
     return @response if defined?(@response)
 
     response ||= Faraday.post Rails.application.secrets.census_url do |request|
-      request.headers["Content-Type"] = "text/xml"
+      request.headers["Content-Type"] = "text/xml;charset=UTF-8'"
+      request.headers["SOAPAction"] = %w{"http://webtests02.getxo.org/Validar"}
       request.body = request_body
     end
 
