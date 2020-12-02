@@ -1,4 +1,7 @@
 ---
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 base_locale: es
 locales: [es, eu]

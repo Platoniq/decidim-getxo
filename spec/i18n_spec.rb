@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "rails_helper"
 require "i18n/tasks"
 
 describe "I18n sanity" do
@@ -8,7 +9,7 @@ describe "I18n sanity" do
   end
 
   let(:i18n) { I18n::Tasks::BaseTask.new(locales: locales.split(",")) }
-  let(:missing_keys) { i18n.missing_keys(eu, nil, es) }
+  let(:missing_keys) { i18n.missing_keys }
   let(:unused_keys) { i18n.unused_keys }
   let(:non_normalized_paths) { i18n.non_normalized_paths }
 
