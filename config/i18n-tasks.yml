@@ -1,3 +1,9 @@
 ---
 base_locale: es
 locales: [es, eu]
+
+search:
+  exclude:
+    - app/assets/images
+    - app/assets/fonts
+    - app/assets/videos
