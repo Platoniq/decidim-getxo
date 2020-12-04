@@ -10,7 +10,7 @@ checksums = [
     package: "decidim-core",
     files: {
       # mailers
-      "/app/mailers/decidim/application_mailer.rb" => "48fb0265664cf34c264fe1d9e907af2d",
+      "/app/mailers/decidim/application_mailer.rb" => "fcd6a9ad382ef76f0a7af216b13b96cb",
       # layouts
       "/app/views/layouts/decidim/mailer.html.erb" => "5bbe335c1dfd02f8448af287328a49dc"
     }
