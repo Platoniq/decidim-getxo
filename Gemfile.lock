@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/decidim/decidim
-  revision: ac6191fa9b9ff2fa243a348142941334d8ee0ef8
-  branch: v0.23.1
+  revision: 3d2bc849885b10761c4195b10e77ceeeb8729f74
+  branch: release/0.23-stable
   specs:
     decidim (0.23.1)
       decidim-accountability (= 0.23.1)
