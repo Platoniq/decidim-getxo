@@ -53,12 +53,13 @@ namespace :getxo do
     end
   end
 
+  # rubocop:disable Lint/HandleExceptions
   desc "export to xliff"
   task xliff: :environment do
     I18n.backend.send(:init_translations)
     trans = I18n.backend.send(:translations)[:eu]
     s = Squasher.new
-    s.squash "en", trans
+    s.squash trans, "en"
     xliff = Xliffle.new
     file = xliff.file("decidim.xliff", "en", "eu")
 
@@ -73,6 +74,7 @@ namespace :getxo do
     end
     puts xliff.to_xliff
   end
+  # rubocop:enable Lint/HandleExceptions
 
   desc "Test email server"
   task :mail_test, [:email] => :environment do |_task, args|
@@ -116,11 +118,11 @@ class Squasher
     @results = []
   end
 
-  def squash(previous_key = "", h)
-    h.each do |key, value|
+  def squash(hash, previous_key = "")
+    hash.each do |key, value|
       this_key = "#{previous_key}.#{key}"
       if value.is_a? Hash
-        squash(this_key, value)
+        squash(value, this_key)
       elsif value.is_a? Array
         result = [this_key.to_s, value.inspect.to_s]
         # puts result

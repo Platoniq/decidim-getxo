@@ -19,10 +19,12 @@ gem "uglifier", "~> 4.1"
 gem "virtus-multiparams"
 
 gem "delayed_job_web"
-gem "faker", "~> 1.9"
+gem "faker"
 gem "rspec"
 gem "ruby-ntlm"
-gem "sentry-raven"
+gem "sentry-rails"
+gem "sentry-ruby"
+
 gem "whenever", require: false
 
 group :development, :test do
