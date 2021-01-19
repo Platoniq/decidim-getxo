@@ -58,16 +58,17 @@ namespace :getxo do
     I18n.backend.send(:init_translations)
     trans = I18n.backend.send(:translations)[:eu]
     s = Squasher.new
-    s.squash 'en', trans
+    s.squash "en", trans
     xliff = Xliffle.new
     file = xliff.file("decidim.xliff", "en", "eu")
 
     s.results.each do |line|
       key = line[0].gsub(/^en\./, "")
       next unless line[1]
+
       begin
         file.string(key, I18n.t(key, locale: :en), line[1])
-      rescue
+      rescue StandardError
       end
     end
     puts xliff.to_xliff
@@ -109,26 +110,26 @@ export SMTP_SETTINGS='{address: \"stmp.example.org\", port: 25, enable_starttls_
 end
 
 class Squasher
-	attr_accessor :results
-	def initialize
-		@results = []
-	end
+  attr_accessor :results
 
-	def squash(previous_key = '', h)
-	  h.each do |key,value|
-	  	this_key = "#{previous_key}.#{key.to_s}"
-	  	if value.is_a? Hash
-	    	squash(this_key, value) 
-	    elsif value.is_a? Array
-	    	result = ["#{this_key}",  "#{value.inspect}"]
-	    	# puts result
-	    	@results << result
-	    else
-	    	result = ["#{this_key}",  "#{value}"]
-	    	# puts result
-	    	@results << result
-	    end
-	  end 
-	end
+  def initialize
+    @results = []
+  end
 
+  def squash(previous_key = "", h)
+    h.each do |key, value|
+      this_key = "#{previous_key}.#{key}"
+      if value.is_a? Hash
+        squash(this_key, value)
+      elsif value.is_a? Array
+        result = [this_key.to_s, value.inspect.to_s]
+        # puts result
+        @results << result
+      else
+        result = [this_key.to_s, value.to_s]
+        # puts result
+        @results << result
+      end
+    end
+  end
 end

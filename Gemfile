@@ -32,12 +32,12 @@ group :development, :test do
 end
 
 group :development do
-  gem 'xliffle'
   gem "letter_opener_web", "~> 1.3"
   gem "listen", "~> 3.1"
   gem "spring", "~> 2.0"
   gem "spring-watcher-listen", "~> 2.0"
   gem "web-console", "~> 3.5"
+  gem "xliffle"
 
   gem "capistrano"
   gem "capistrano-bundler"
@@ -47,8 +47,8 @@ group :development do
 end
 
 group :production do
-  gem "figaro", "~> 1.2"
   gem "daemons", "~> 1.3"
   gem "delayed_job_active_record", "~> 4.1"
+  gem "figaro", "~> 1.2"
   gem "passenger", "~> 6.0"
 end
