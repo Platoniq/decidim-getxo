@@ -11,8 +11,23 @@ eu:
       not_found: Ezin izan da aurkitu. Aldez aurretik erregistratu zara?
   forms:
     required_explanation: Eskatutako eremuak * batez markatuta daude
+    length_validator:
+      minimum:
+        one: "%{count} caracteres gutxienez"
+        other: "%{count} caracteres gutxienez"
+    correct_errors: Erroreak daude galdetegian; mesedez, zuzen itzazu jarraitu ahal izateko.
   layouts:
     decidim:
+      decidim_awesome:
+        awesome_config:
+          amendments: Zuzenketak
+          categories: Kategoriak
+          drag_and_drop_image: Gehitu irudiak arrastatuz, jareginez edo itsatsita.
+          meetings: Topaketa-zerrenda
+          proposals: Proposamenak
+          autosaved_success: Tokiko biltegian gordetako datuak
+          autosaved_error: LocalStorage ez da onartzen zure arakatzailean, inprimakia ezin da automatikoki gorde.
+          autosaved_retrieved: Inprimaki honen datuak aurreko saio batetik berreskuratu dira
       assemblies:
         index:
           children: 'Asanbladak:'
@@ -245,6 +260,12 @@ eu:
             question:
               invalid_num_votes: Boto kopurua ez da balioduna
   decidim:
+    decidim_awesome:
+      map_component:
+        map:
+          show:
+            view_meeting: Ikusi bilera
+            view_proposal: Ikusi proposamena
     meetings:
       admin:
         meetings:

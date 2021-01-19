@@ -14,11 +14,11 @@ describe "Visit the home page", type: :system, perform_enqueued: true do
     expect(page).to have_content("Home")
   end
 
-  # it "changes the locale to the chosen one" do
-  #   within_language_menu do
-  #     click_link "Euskera"
-  #   end
+  it "changes the locale to the chosen one" do
+    within_language_menu do
+      click_link "Euskera"
+    end
 
-  #   expect(page).to have_content("Inici")
-  # end
+    expect(page).to have_content("Hasiera")
+  end
 end
