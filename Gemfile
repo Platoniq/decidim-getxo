@@ -19,7 +19,7 @@ gem "uglifier", "~> 4.1"
 gem "virtus-multiparams"
 
 gem "delayed_job_web"
-gem "faker"
+gem "faker", "~> 1.9"
 gem "rspec"
 gem "ruby-ntlm"
 gem "sentry-rails"
